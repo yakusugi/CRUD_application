@@ -12,9 +12,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -32,6 +34,8 @@ public class AddUserActivity extends AppCompatActivity {
 
     EditText txtDate, textStoreName, textProductName, textProductType, doublePrice;
     Button saveButton;
+    public static final int DEFAULT_TIMEOUT_MS = 2500;
+    StringRequest stringRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +59,12 @@ public class AddUserActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
 
     private void insertData() throws ParseException {
 
         String sDate1 = txtDate.getText().toString();
-        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+        Date date1=new SimpleDateFormat("yyyy/mm/dd").parse(sDate1);
         System.out.println(sDate1+"\t"+date1);
 
         Date date = date1;
@@ -99,6 +99,7 @@ public class AddUserActivity extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+
                         }
                     },
                     new Response.ErrorListener() {
@@ -106,7 +107,10 @@ public class AddUserActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(AddUserActivity.this, "unable to add the record" + error.toString(), Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "onErrorResponse: " + error.toString());
+
                         }
+
+
                     }){
                 //get params
                 protected Map<String, String> getParams() throws AuthFailureError {
@@ -120,15 +124,19 @@ public class AddUserActivity extends AppCompatActivity {
 
                     return super.getParams();
                 }
+
+
+
             };
+
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    DEFAULT_TIMEOUT_MS,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
 
         }
-
-
-
-
     }
 }
