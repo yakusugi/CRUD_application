@@ -34,8 +34,7 @@ public class AddUserActivity extends AppCompatActivity {
 
     EditText txtDate, textStoreName, textProductName, textProductType, doublePrice;
     Button saveButton;
-    public static final int DEFAULT_TIMEOUT_MS = 2500;
-    StringRequest stringRequest;
+    public static final int DEFAULT_TIMEOUT_MS = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
