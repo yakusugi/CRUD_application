@@ -34,7 +34,7 @@ public class AddUserActivity extends AppCompatActivity {
 
     EditText txtDate, textStoreName, textProductName, textProductType, doublePrice;
     Button saveButton;
-    public static final int DEFAULT_TIMEOUT_MS = 10000;
+    public static final int DEFAULT_TIMEOUT_MS = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,9 @@ public class AddUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Log.d("TAG0927", "onClick: btnClicked");
                     insertData();
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -83,7 +85,8 @@ public class AddUserActivity extends AppCompatActivity {
         } else if (price == null) {
             doublePrice.setError("Enter price");
         } else {
-            String insert_url = "http://13.231.54.96/insertData.php";
+//            String insert_url = "http://13.231.54.96/insertData.php";
+            String insert_url = "http://192.168.0.44/insertData.php";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, insert_url,
                     new Response.Listener<String>() {
                         @Override
