@@ -73,7 +73,8 @@ public class EditActivity extends AppCompatActivity {
                 }else if (email.isEmpty()){
                     editEmail.setError("Please enter email");
                 }else{
-                    String url_edit = "http://192.168.43.48/real_crud_volley/updateData.php";
+                    String url_edit = "http://13.231.226.174/updateData.php";
+//                    String url_edit = "http://192.168.43.48/updateData.php";
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url_edit,
                             new Response.Listener<String>() {

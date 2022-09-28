@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void retrieve_all_user() {
-        String get_all_users_url = "http://192.168.0.44/displayAll.php";
+//        String get_all_users_url = "http://192.168.0.44/displayAll.php";
+        String get_all_users_url = "http://13.231.226.174/displayAll.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, get_all_users_url,
                 new Response.Listener<String>() {

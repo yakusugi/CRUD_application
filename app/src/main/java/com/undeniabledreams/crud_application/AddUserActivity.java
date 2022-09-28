@@ -85,8 +85,8 @@ public class AddUserActivity extends AppCompatActivity {
         } else if (price == null) {
             doublePrice.setError("Enter price");
         } else {
-//            String insert_url = "http://13.231.54.96/insertData.php";
-            String insert_url = "http://192.168.0.44/insertData.php";
+            String insert_url = "http://13.231.226.174/insertData.php";
+//            String insert_url = "http://192.168.0.44/insertData.php";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, insert_url,
                     new Response.Listener<String>() {
                         @Override

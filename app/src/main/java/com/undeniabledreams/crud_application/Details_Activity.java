@@ -90,7 +90,8 @@ public class Details_Activity extends AppCompatActivity {
 
         final String id = Objects.requireNonNull(getIntent().getExtras()).getString("id");
 
-        String url_delete = "http://192.168.0.44/delete.php";
+//        String url_delete = "http://192.168.0.44/delete.php";
+        String url_delete = "http://http://13.231.226.174/delete.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_delete,
                 new Response.Listener<String>() {
