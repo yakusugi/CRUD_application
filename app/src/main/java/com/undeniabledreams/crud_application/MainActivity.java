@@ -2,6 +2,7 @@ package com.undeniabledreams.crud_application;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -102,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                                     String sDate1 = object.getString("date");
-                                    Date date1=new SimpleDateFormat("yyyy/mm/dd").parse(sDate1);
+                                    Date date1=new SimpleDateFormat("yyyy-mm-dd").parse(sDate1);
 
                                     String storeName = object.getString("store_name");
                                     String productName = object.getString("product_name");
                                     String productType = object.getString("product_type");
                                     Double price = Double.parseDouble(object.getString("price"));
-                                    String created_date = object.getString("created_date");
+//                                    String created_date = object.getString("created_date");
 
                                     UserModel userModel = new UserModel(id, date1, storeName, productName, productType, price);
 
@@ -119,15 +120,19 @@ public class MainActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Log.d("TAG10012022", "onResponse: " + e.toString());
                         } catch (ParseException e) {
                             e.printStackTrace();
+                            Log.d("TAG10012022", "onResponse: " + e.toString());
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Server error "+error.toString(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Server error "+error.toString(), Toast.LENGTH_SHORT).show();
+                        Log.d("TAG10012022", "onResponse: " + error.toString());
+
                     }
                 });
 

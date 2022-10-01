@@ -100,6 +100,7 @@ public class AddUserActivity extends AppCompatActivity {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                Log.d("TAG10012022", "onResponse: " + e.toString());
                             }
 
                         }
@@ -108,7 +109,7 @@ public class AddUserActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(AddUserActivity.this, "unable to add the record" + error.toString(), Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "onErrorResponse: " + error.toString());
+                            Log.d("TAG10012022", "onErrorResponse: " + error.toString());
 
                         }
 
